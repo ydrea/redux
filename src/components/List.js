@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
-  // selectPolicy,
+  selectPolicy,
   // createPolicy,
   // deletePolicy,
-  makeClaim,
+  // makeClaim,
 } from "../actions";
 
 class List extends Component {
   componentDidMount() {
-    this.props.makeClaim();
+    this.props.selectPolicy();
     console.log(this.props);
   }
 
@@ -18,8 +18,8 @@ class List extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  // console.log(state);
-  return state;
-};
-export default connect(mapStateToProps, { makeClaim })(List);
+const mapStateToProps = (state) => ({
+  name: state.name,
+  markers: state.markers,
+});
+export default connect(mapStateToProps, { selectPolicy })(List);
