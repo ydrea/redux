@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 
 //reducer 'PICK A POLICY'
-export const PickaPolicy = (pickedPolicy = [], action) => {
+export const PickaPolicy = (pickedPolicy = null, action) => {
   if (action.type === "SELECTED") {
     return action.payload;
   }

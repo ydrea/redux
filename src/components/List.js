@@ -10,6 +10,7 @@ import {
 class List extends Component {
   componentDidMount() {
     this.props.makeClaim();
+    console.log(this.props);
   }
 
   render() {
@@ -18,6 +19,7 @@ class List extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const {key: props.key } = state;
+  // console.log(state);
+  return state;
 };
-export default connect(getState, { makeClaim })(List);
+export default connect(mapStateToProps, { makeClaim })(List);
