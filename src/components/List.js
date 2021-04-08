@@ -17,7 +17,7 @@ class List extends Component {
   }
 }
 
-const getState = (state) => {
+const mapStateToProps = (state) => {
   const {key: props.key } = state;
 };
 export default connect(getState, { makeClaim })(List);
