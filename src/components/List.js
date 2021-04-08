@@ -18,6 +18,6 @@ class List extends Component {
 }
 
 const getState = (state) => {
-  // console.log(state);
+  const {key: props.key } = state;
 };
-export default connect(null, { makeClaim })(List);
+export default connect(getState, { makeClaim })(List);
