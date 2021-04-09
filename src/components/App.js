@@ -7,6 +7,7 @@ function App() {
       <header className="App-header">
         <List />
       </header>
+      <div>placeholder</div>
     </div>
   );
 }

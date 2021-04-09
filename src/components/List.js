@@ -14,7 +14,15 @@ class List extends Component {
   }
 
   render() {
-    return <div>Reduxing . . .</div>;
+    const renderList = this.props.markers.map((i) => (
+      <div key={i.title}>
+        <h5>{i.title}</h5>
+        <p>
+          {i.description}:{i.coordinate.latitude},{i.coordinate.longitude}
+        </p>
+      </div>
+    ));
+    return <div>{renderList}</div>;
   }
 }
 
