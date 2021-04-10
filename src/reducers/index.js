@@ -55,8 +55,6 @@ const markerReducer = () => {
 // Setup
 export default combineReducers({
   PickaReducer: PickaReducer,
-  // Claimshistory: ClaimsHistory,
   Accounting: AccOunting,
-  // Policies: PoliCies,
   markers: markerReducer,
 });
