@@ -31,7 +31,16 @@ export const makeClaim = (name, howMuch) => {
     },
   };
 };
-
+// action 'Amount'
+export const calculateAmount = (name, amount) => {
+  return {
+    type: "AMOUNT",
+    payload: {
+      name: name,
+      amount: amount,
+    },
+  };
+};
 //action 'Create'
 export const createPolicy = (name) => {
   return {

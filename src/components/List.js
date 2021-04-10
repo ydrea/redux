@@ -15,21 +15,28 @@ class List extends Component {
     console.log(this.props);
   }
 
+  renderList = () => {
+    //return new array from renderList
+    return this.props.markers.map((i) => {
+      //print out jsx
+      return (
+        <div key={i.title}>
+          <h5>{i.title}</h5>
+          <p>
+            {i.description}:{i.coordinate.latitude},{i.coordinate.longitude}
+          </p>
+        </div>
+      );
+    });
+  };
+
   render() {
-    const renderList = this.props.markers.map((i) => (
-      <div key={i.title}>
-        <h5>{i.title}</h5>
-        <p>
-          {i.description}:{i.coordinate.latitude},{i.coordinate.longitude}
-        </p>
-      </div>
-    ));
-    return <div>{renderList}</div>;
+    return <div>{this.renderList()}</div>;
   }
 }
 
 const mapStateToProps = (state) => ({
-  name: state.name,
+  // name: state.name,
   markers: state.markers,
 });
 export default connect(mapStateToProps, { selectPolicy })(List);

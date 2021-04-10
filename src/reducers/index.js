@@ -1,24 +1,26 @@
 import { combineReducers } from "redux";
 // import { markerReducer } from "./MarkerReducer";
 
-//reducer 'PICK A POLICY'
-export const PickaPolicy = (pickedPolicy = null, action) => {
-  if (action.type === "SELECTED") {
-    return action.payload;
+//reducer LIST API'
+export const PickaReducer = (state = [], action) => {
+  switch (action.type) {
+    case "FETCH_API":
+      return action.payload;
+    case "SELECTED":
+      return action.payload;
+    case "CLAIM":
+      return [...state, action.payload];
+    case "+POLICY":
+      return [...state, action.payload.name];
+    case "-POLICY":
+      return state.filter((policy) => policy !== action.payload.name);
+    default:
+      return state;
   }
-  return pickedPolicy;
-};
-
-//reducer 'ADD TO STATE'
-export const ClaimsHistory = (oldState = [], action) => {
-  if (action.type === "CLAIM") {
-    return [...oldState, action.payload];
-  }
-  return oldState;
 };
 
 //reducer 'CALCULATE'
-export const AccOunting = (bagOfCash = 105, action) => {
+export const AccOunting = (bagOfCash = null, action) => {
   if (action.type === "CLAIM") {
     return bagOfCash - action.payload.howMuch;
   } else if (action.type === "+POLICY") {
@@ -27,15 +29,6 @@ export const AccOunting = (bagOfCash = 105, action) => {
   return bagOfCash;
 };
 
-//reducer 'CREATE/REMOVE USERS'
-export const PoliCies = (listOfPolicies = [], action) => {
-  if (action.type === "+POLICY") {
-    return [...listOfPolicies, action.payload.name];
-  } else if (action.type === "-POLICY") {
-    return listOfPolicies.filter((policy) => policy !== action.payload.name);
-  }
-  return listOfPolicies;
-};
 const markerReducer = () => {
   return [
     {
@@ -61,9 +54,9 @@ const markerReducer = () => {
 
 // Setup
 export default combineReducers({
-  PickaPolicy: PickaPolicy,
-  Claimshistory: ClaimsHistory,
+  PickaReducer: PickaReducer,
+  // Claimshistory: ClaimsHistory,
   Accounting: AccOunting,
-  Policies: PoliCies,
+  // Policies: PoliCies,
   markers: markerReducer,
 });
