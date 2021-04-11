@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-// import { markerReducer } from "./MarkerReducer";
+// import { PostReducer } from "./MarkerReducer";
 
 //reducer LIST API'
 export const PickaReducer = (state = [], action) => {
@@ -33,20 +33,20 @@ const markerReducer = () => {
   return [
     {
       coordinate: { latitude: 45.815, longitude: 15.9819 },
-      title: "MEDO",
-      description: "this is a MEDO",
+      title: "August",
+      description: "this is August Senoa",
       image: "../assets/ping_1.png",
     },
     {
       coordinate: { latitude: 45.813, longitude: 15.981 },
-      title: "ZEKO",
-      description: "this is a ZEKO",
+      title: "Tin",
+      description: "this is Tin Ujevic",
       image: "../assets/ping_2.png",
     },
     {
       coordinate: { latitude: 45.8124, longitude: 15.9789 },
-      title: "VJEVER",
-      description: "this is a VJEVER",
+      title: "Miroslav",
+      description: "this is Miroslav Krleza",
       image: "../assets/ping_3.png",
     },
   ];
@@ -54,7 +54,7 @@ const markerReducer = () => {
 
 // Setup
 export default combineReducers({
-  PickaReducer: PickaReducer,
-  Accounting: AccOunting,
+  posts: PickaReducer,
+  accounts: AccOunting,
   markers: markerReducer,
 });

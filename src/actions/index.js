@@ -1,16 +1,15 @@
 //action 'async'
 import jsonPlaceholder from "../APIs/jsonPlaceholder";
 
-export const fetchAPIPosts = async () => {
-  return async (dispatch, getState) => {
-    const response = await jsonPlaceholder.get("/posts");
+export const fetchAPIPosts = () => {
+  return async function (dispatch, getState) {
+    const result = await jsonPlaceholder.get("/posts");
     dispatch({
       type: "FETCH_API",
-      payload: response,
+      payload: result.data,
     });
   };
 };
-
 //action 'Select'
 export const selectPolicy = (name) => {
   return {

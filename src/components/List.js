@@ -2,8 +2,8 @@ import React, { Component } from "react";
 // import axios from "axios";
 import { connect } from "react-redux";
 import {
-  // fetchAPIPosts,
-  selectPolicy,
+  fetchAPIPosts,
+  // selectPolicy,
   // createPolicy,
   // deletePolicy,
   // makeClaim,
@@ -11,32 +11,35 @@ import {
 
 class List extends Component {
   componentDidMount() {
-    this.props.selectPolicy();
-    console.log(this.props);
+    this.props.fetchAPIPosts();
   }
 
   renderList = () => {
     //return new array from renderList
-    return this.props.markers.map((i) => {
+    return this.props.posts.map((i) => {
       //print out jsx
       return (
-        <div key={i.title}>
+        <div key={i.id}>
           <h5>{i.title}</h5>
-          <p>
-            {i.description}:{i.coordinate.latitude},{i.coordinate.longitude}
-          </p>
+          <p>{i.body}</p>
         </div>
       );
     });
   };
 
   render() {
-    return <div>{this.renderList()}</div>;
+    console.log(this.props.posts);
+    return (
+      <div>
+        nek
+        {this.renderList()}
+      </div>
+    );
   }
 }
 
-const mapStateToProps = (state) => ({
-  // name: state.name,
-  markers: state.markers,
-});
-export default connect(mapStateToProps, { selectPolicy })(List);
+const mapStateToProps = (state) => {
+  // console.log(state);
+  return { posts: state.posts };
+};
+export default connect(mapStateToProps, { fetchAPIPosts })(List);
