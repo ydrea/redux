@@ -1,23 +1,15 @@
 //action 'async'
 import jsonPlaceholder from "../APIs/jsonPlaceholder";
 
-export const fetchAPIPosts = () => {
-  return async function (dispatch, getState) {
-    const result = await jsonPlaceholder.get("/posts");
-    dispatch({
-      type: "FETCH_API",
-      payload: result.data,
-    });
-  };
+export const fetchAPIPosts = () => async (dispatch) => {
+  const response = await jsonPlaceholder.get("/posts");
+  dispatch({ type: "FETCH_API", payload: response.data });
 };
-//action 'Select'
-export const selectPolicy = (name) => {
-  return {
-    type: "SELECTED",
-    payload: {
-      name: name,
-    },
-  };
+
+//action 'Select async'
+export const selectPolicy = (id) => async (dispatch) => {
+  const response = await jsonPlaceholder.get(`/users/${id}`);
+  dispatch({ type: "SELECTED", payload: response.data });
 };
 
 //action 'Pay'

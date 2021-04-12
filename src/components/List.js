@@ -8,6 +8,7 @@ import {
   // deletePolicy,
   // makeClaim,
 } from "../actions";
+import UserSig from "./UserSig";
 
 class List extends Component {
   componentDidMount() {
@@ -22,6 +23,10 @@ class List extends Component {
         <div key={i.id}>
           <h5>{i.title}</h5>
           <p>{i.body}</p>
+
+          <div>
+            <UserSig userId={i.userId} />
+          </div>
         </div>
       );
     });
@@ -29,12 +34,7 @@ class List extends Component {
 
   render() {
     console.log(this.props.posts);
-    return (
-      <div>
-        nek
-        {this.renderList()}
-      </div>
-    );
+    return <div>{this.renderList()}</div>;
   }
 }
 
