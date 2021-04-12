@@ -1,5 +1,12 @@
 //action 'async'
 import jsonPlaceholder from "../APIs/jsonPlaceholder";
+import _, { forEach } from "lodash";
+
+export const fetchAPI = () => async (dispatch, getState) => {
+  await dispatch(fetchAPIPosts());
+  const userIDs = _.uniq(_.map(getState().posts, "userId"));
+  userIDs.forEach((id) => dispatch(fetchAPIUsers(id)));
+};
 
 export const fetchAPIPosts = () => async (dispatch) => {
   const response = await jsonPlaceholder.get("/posts");
@@ -7,7 +14,7 @@ export const fetchAPIPosts = () => async (dispatch) => {
 };
 
 //action 'Select async'
-export const selectPolicy = (id) => async (dispatch) => {
+export const fetchAPIUsers = (id) => async (dispatch) => {
   const response = await jsonPlaceholder.get(`/users/${id}`);
   dispatch({ type: "SELECTED", payload: response.data });
 };

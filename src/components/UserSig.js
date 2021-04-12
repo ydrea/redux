@@ -1,20 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  // fetchAPIPosts,
-  selectPolicy,
-  // createPolicy,
-  // deletePolicy,
-  // makeClaim,
-} from "../actions";
 
 class UserSig extends Component {
-  componentDidMount() {
-    this.props.selectPolicy(this.props.userId);
-  }
+  // componentDidMount() {
+  //   this.props.fetchAPIUsers(this.props.userId);
+  // }
 
   render() {
-    const user = this.props.users.find((user) => user.id === this.props.userId);
+    const { user } = this.props;
     if (!user) {
       return <p>nix</p>;
     }
@@ -22,8 +15,8 @@ class UserSig extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return { users: state.users };
+const mapStateToProps = (state, ownProps) => {
+  return { users: state.users.find((user) => user.id === ownProps.userId) };
 };
 
-export default connect(mapStateToProps, { selectPolicy })(UserSig);
+export default connect(mapStateToProps)(UserSig);
