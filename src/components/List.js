@@ -2,7 +2,7 @@ import React, { Component } from "react";
 // import axios from "axios";
 import { connect } from "react-redux";
 import {
-  fetchAPI,
+  fetchAPIs,
   // selectPolicy,
   // createPolicy,
   // deletePolicy,
@@ -12,7 +12,7 @@ import UserSig from "./UserSig";
 
 class List extends Component {
   componentDidMount() {
-    this.props.fetchAPI();
+    this.props.fetchAPIs();
   }
 
   renderList = () => {
@@ -39,7 +39,6 @@ class List extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state);
   return { posts: state.posts };
 };
-export default connect(mapStateToProps, { fetchAPI })(List);
+export default connect(mapStateToProps, { fetchAPIs })(List);

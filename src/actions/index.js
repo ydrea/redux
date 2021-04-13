@@ -1,13 +1,14 @@
-//action 'async'
+//action fetch 2 APIs
 import jsonPlaceholder from "../APIs/jsonPlaceholder";
 import _, { forEach } from "lodash";
 
-export const fetchAPI = () => async (dispatch, getState) => {
+export const fetchAPIs = () => async (dispatch, getState) => {
   await dispatch(fetchAPIPosts());
   const userIDs = _.uniq(_.map(getState().posts, "userId"));
   userIDs.forEach((id) => dispatch(fetchAPIUsers(id)));
 };
 
+//action 'async'
 export const fetchAPIPosts = () => async (dispatch) => {
   const response = await jsonPlaceholder.get("/posts");
   dispatch({ type: "FETCH_API", payload: response.data });

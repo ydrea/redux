@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 class UserSig extends Component {
   render() {
+    console.log(this.props);
     const { user } = this.props;
     if (!user) {
       return <p>nix</p>;
@@ -12,7 +13,7 @@ class UserSig extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { users: state.users.find((user) => user.id === ownProps.userId) };
+  return { user: state.users.find((user) => user.id === ownProps.userId) };
 };
 
 export default connect(mapStateToProps)(UserSig);
