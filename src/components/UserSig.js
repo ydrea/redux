@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class UserSig extends Component {
-  // componentDidMount() {
-  //   this.props.fetchAPIUsers(this.props.userId);
-  // }
-
   render() {
     const { user } = this.props;
     if (!user) {
